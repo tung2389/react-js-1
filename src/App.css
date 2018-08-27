@@ -1,0 +1,466 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 19s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 19px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.horse {
+  background: url("./horse-head.svg");
+  background-size: 96%;
+  background-color: green;
+  padding: 19px 19px;
+  margin: auto;
+}
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 19px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+  margin: auto;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  color: blue;
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  left: 28%;
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+.square3 {
+  color: red;
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  left: 28%;
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+.square2 {
+  background: white;
+  border: 1px solid white;
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 10px 10px;
+}
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  /*display: flex;*/
+  flex-direction: row;
+  margin:auto;
+  text-align: center;
+}
+
+.game-info {
+  margin: auto;
+}
+.winner{
+  background-color: #0da000;
+}
+.normal{
+  padding: 19px 19px;
+  background-color: green;
+}
+.up{
+  margin: auto;
+}
+.cell{
+  padding: 30px 30px;
+  margin: auto;
+}
+.died{
+  padding: 19px 19px;
+  margin: auto;
+  background-color: red;
+}
+.red{
+  background: red;
+  border: 1px solid #999;
+  float: left;
+  left: 28%;
+  position: relative;
+
+  
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+.inp{
+  height: 50px;
+  width: 50px;
+  visibility: visible;
+}
+.inp2{
+  height: 50px;
+  width: 50px;
+  visibility: hidden;
+}
+.snake2{
+  background: green;
+  border: 1px solid green;
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 10px 10px;
+}
+.food {
+  background: red;
+  border: 1px solid red;
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 10px 10px;
+  border-radius: 50px;
+}
+.squareline {
+  background: green;
+  border: 1px solid green;
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 10px 10px;
+}
+.snakehead {
+  background: green;
+  border: 1px solid green;
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 10px 10px;
+  border-radius: 20% / 50%;
+}
+.tank1 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/tank-up.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.tank2 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/tank-right.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.tank3 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/tank-down.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.tank4 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/tank-left.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.square22 {
+  background: white;
+  border: 1px solid white;
+  float: left;
+  left:10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 20px 20px;
+}
+.squareline2 {
+  background: green;
+  border: 1px solid green;
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 20px 10px;
+}
+.squareline3 {
+  background: green;
+  border: 1px solid green;
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 10px 20px;
+}
+.bullet1 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/bullet-up.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.bullet2 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/bullet-right.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.bullet3 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/bullet-down.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.bullet4 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/bullet-left.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.enemy1 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/enemy-up.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.enemy2 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/enemy-right.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.enemy3 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/enemy-down.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.enemy4 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/enemy-left.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.enemybullet1 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/enemy-bulletup.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.enemybullet2 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/enemy-bulletright.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.enemybullet3 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/enemy-bulletdown.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.enemybullet4 {
+  float: left;
+  left: 10%;
+  position: relative;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  background: url("./img/enemy-bulletleft.png");
+  background-size: 100%;
+  padding: 19px 19px;
+}
+.inpstyle {
+  height: 50px;
+  width: 50px;
+  font-size: 24px;
+}
+.inpstyle:hover
+{
+    background-color: yellow;
+}
+@keyframes abcd
+{
+  25%  {background-color: yellow}
+  50%  {background-color: white}
+  75%  {background-color: red}
+  100% {background-color: lime}
+}
+.abc
+{
+  width: 100px;
+  height: 100px;
+  font-size: 20px;
+  position: relative;
+  animation-name: abcd;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
