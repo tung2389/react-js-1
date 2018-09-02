@@ -2,9 +2,9 @@ import React from 'react';
 import Square from './Square-chess';
 
 class Board extends React.Component{
-    renderSquare(i){
-        return <Square value={this.props.squares[i]}
-         onClick={() => this.props.onClick(i)} disabled={this.props.ending}/>
+    renderSquare(x,y){
+        return <Square value={this.props.squares[x][y]}
+         onClick={() => this.props.onClick(x,y)} disabled={this.props.ending}/>
     }
 
   renderAllSquares(){
@@ -14,7 +14,7 @@ class Board extends React.Component{
         const squares = Array(8).fill(null);
         for(let j = 0; j < 8; j++){
             var squareKey = i * 8 + j;
-            squares.push(<span key={squareKey}>{this.renderSquare(squareKey)}</span>);
+            squares.push(<span key={squareKey}>{this.renderSquare(i,j)}</span>);
         }
         board.push(<div className='up' key={i}> {squares}</div>);
     }
