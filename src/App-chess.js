@@ -4,36 +4,61 @@ import {rand} from './random';
 let defaultx=rand(0,8);
 let defaulty=rand(0,8);
 let defaultco=defaultx*8+defaulty;
+function create_board(x)
+{
+  let board = Array(8);
+  for(let i=0;i<8;i++)
+  {
+    let subarray = Array(9).fill(x);
+    board[i]=subarray;
+  }
+  return board;
+}
 class App_chess extends React.Component{
   constructor(props){//a. Hiển thị lịch sử kèm với vị trí đã chọn:*/
     super(props);
     this.state = {
-      squares: Array(80).fill('normal'),
-      vis:Array(80).fill(0),
-      presum:defaultco,
+      squares: create_board("normal"),
+      vis:create_board(0),
       cnt:0,
       time:20,
       start:false,
-      undomove:Array(80).fill(0),
+      undomovex:Array(80).fill(0),
+      undomovey:Array(80).fill(0),
       curx:defaultx,
       cury:defaulty,
+      hasAlert:false,
     };
     this.handleClick=this.handleClick.bind(this);
     this.start=this.start.bind(this);
     this.restart=this.restart.bind(this);
     this.countdown=this.countdown.bind(this);
     this.undo=this.undo.bind(this);
+    this.mark=this.mark.bind(this);
   }
+  mark(curx,cury)
+  {
+    let board=this.state.squares.slice();
+    let vis=this.state.vis.slice();
+    for(let i=0;i<8;i++)
+    {
+      for(let j=0;j<8;j++)
+      {
+        if(((Math.abs(i - curx) === 2 && Math.abs(j - cury) === 1) || (Math.abs(i - curx) === 1 && Math.abs(j - cury) === 2)) && vis[i][j] === 0)
+        board[i][j]="cancome";
+        else
+        {
+          if((i !== curx || j !== cury) && board[i][j] !== 'died')
+          {
+            board[i][j] = 'normal';
+          }
+        }
+    }
+  }
+  this.setState({squares:board});
+}
   undo()
   {
-    let move=this.state.undomove.slice();
-    let squares=this.state.squares.slice();
-    let viss=this.state.vis.slice();
-    let cnt1=this.state.cnt;
-    let pos2=move[cnt1-1];
-    squares[move[cnt1-1]]='horse';
-    viss[this.state.presum]=0;
-    squares[this.state.presum]='normal';
     let cnt2=this.state.cnt-1;
     if(cnt2<0)
     {
@@ -41,12 +66,25 @@ class App_chess extends React.Component{
     }
     else
     {
+    let movex=this.state.undomovex.slice();
+    let movey=this.state.undomovey.slice();
+    let squares=this.state.squares.slice();
+    let viss=this.state.vis.slice();
+    let cnt1=this.state.cnt;
+    let posx=movex[cnt1-1];
+    let posy=movey[cnt1-1];
+    squares[posx][posy]='horse';
+    viss[this.state.curx][this.state.cury]=0;
+    squares[this.state.curx][this.state.cury]='normal';
+    let cnt2=this.state.cnt-1;
     this.setState({
-      presum:pos2,
+      curx:posx,
+      cury:posy,
       squares:squares,
       vis:viss,
       cnt:cnt2,
     });
+    this.mark(posx,posy);
   }
 }
   restart()
@@ -54,17 +92,35 @@ class App_chess extends React.Component{
   alert('the game has been restarted');
   defaultx=rand(0,8);
   defaulty=rand(0,8);
-  defaultco=defaultx*8+defaulty;
+  let board = this.state.squares.slice();
+  let viss = this.state.vis.slice();
+  for(let i=0;i<8;i++)
+  {
+    for(let j=0;j<8;j++)
+    {
+      if(i===defaultx && j===defaulty)
+      {
+        board[i][j]='horse';
+        viss[i][j]=1;
+      }
+      else
+      {
+        board[i][j]='normal';
+        viss[i][j]=0;
+      }
+    }
+  }
     this.setState({
-      squares: Array(80).fill('normal'),
-      vis:Array(80).fill(0),
-      presum:defaultco,
+      squares: board,
+      vis:viss,
       cnt:0,
       time:20,
       start:false,
       curx:defaultx,
       cury:defaulty,
+      hasAlert:false,
     });
+    this.mark(defaultx,defaulty);
   }
   countdown()
   {
@@ -80,61 +136,45 @@ class App_chess extends React.Component{
   }
   start()
   {
-    let newundo=this.state.undomove.slice();
     if(this.state.start===false)
     {
-    let squares=this.state.squares.slice();
-    let viss=this.state.vis.slice();
-    for(let i=0;i<=63;i++)
-    {
-      viss[i]=0;
+    let board = this.state.squares.slice();
+    let movex = this.state.undomovex.slice();
+    let movey = this.state.undomovey.slice();
+    let viss = this.state.vis.slice();
+    viss[defaultx][defaulty]=1;
+    movex[0]=defaultx;
+    movey[0]=defaulty;
+    board[defaultx][defaulty]='horse';
+    this.setState({squares:board,start:true,undomovex:movex,undomovey:movey,vis:viss});
+    this.mark(defaultx,defaulty);
     }
-    for(let i=64;i<=80;i++)
-    {
-      viss[i]=1;
-    }
-    squares[defaultco]='horse';
-    viss[defaultco]=1;
-    newundo[0]=defaultco;
-    this.setState({squares:squares,vis:viss,undomove:newundo,start:true});
   }
-}
-  handleClick(i){
-    let undo2=this.state.undomove.slice();
+  handleClick(x,y){
+    let movex = this.state.undomovex.slice();
+    let movey = this.state.undomovey.slice();
     let squares = this.state.squares.slice();
     let viss=this.state.vis.slice();
-    let pre=this.state.presum;
-    let posx,posy;
-    for(let k=0;k<8;k++)
+    if((Math.abs(x-this.state.curx)===2 && Math.abs(y-this.state.cury)===1)||(Math.abs(x-this.state.curx)===1 && Math.abs(y-this.state.cury)===2))
     {
-      for(let j=0;j<8;j++)
+      if(viss[x][y]===0)
       {
-        if(k*8+j===i)
-        {
-          posx=k;
-          posy=j;
-          break;
-        }
-      }
-    }
-    if((Math.abs(posx-this.state.curx)===2 && Math.abs(posy-this.state.cury)===1)||(Math.abs(posx-this.state.curx)===1 && Math.abs(posy-this.state.cury)===2))
-    {
-      if(viss[i]===0)
-      {
-      squares[i]='horse';
-      squares[this.state.presum]='died';
-      viss[i]=1;
+      squares[x][y]='horse';
+      squares[this.state.curx][this.state.cury]='died';
+      viss[x][y]=1;
       let cnt2=this.state.cnt+1;
-      undo2[cnt2]=i;
+      movex[cnt2]=x;
+      movey[cnt2]=y;
       this.setState({
         squares: squares,
         vis:viss,
-        presum:i,
         cnt:cnt2,
-        undomove:undo2,
-        curx:posx,
-        cury:posy,
+        undomovex:movex,
+        undomovey:movey,
+        curx:x,
+        cury:y,
       });
+      this.mark(x,y);
     }
     else
     {
@@ -148,16 +188,6 @@ class App_chess extends React.Component{
   }
   componentDidUpdate()
   {
-    let pos=this.state.presum;
-    let viss2=this.state.vis.slice();
-    let pre=this.state.presum;
-    /*if(this.state.time===0)
-    {
-      alert('You lose,time over');
-      this.restart();
-    }
-    else
-    {*/
     if(this.state.cnt===63)
     {
       alert('You win');
@@ -173,17 +203,17 @@ class App_chess extends React.Component{
         	{
         		if ((Math.abs(this.state.curx - i) === 2 && Math.abs(this.state.cury - j) === 1) || (Math.abs(this.state.curx - i) === 1 && Math.abs(this.state.cury - j) === 2))
         		{
-        			if (vis[i*8+j] === 0)
+        			if (vis[i][j] === 0)
         			{
         				check = true;
         			}
         		}
         	}
         }
-        if (check===false)
+        if (check===false && this.state.hasAlert===false)
         {
+          this.setState({hasAlert:true});
           alert("You lose,no movement is valid now");
-          this.restart();
         }
         }
         }
@@ -198,8 +228,8 @@ class App_chess extends React.Component{
         <h1 align='center'><button onClick={this.start}>Start</button></h1>
         <h1 align='center'><button onClick={this.restart}>Restart</button></h1>
         {/*--<h1 align='center'>Remaining Time: {this.state.time}</h1>*/}
-        <div align='center' style={style}><Board squares={squares} onClick={i => this.handleClick(i)} /></div>
-        <h1 align='center'><button onClick={this.undo}>Undo</button></h1>
+        <div align='center' style={style}><Board squares={squares} onClick={(x,y) => this.handleClick(x,y)} /></div>
+        <h1 align='center'><button onClick={this.undo} disabled={this.state.hasAlert}>Undo</button></h1>
         </div>
     );
   }
