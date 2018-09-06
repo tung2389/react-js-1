@@ -29,7 +29,7 @@
 .horse {
   background: url("./horse-head.svg");
   background-size: 96%;
-  background-color: green;
+  background-color: gray;
   padding: 19px 19px;
   margin: auto;
 }
@@ -120,7 +120,7 @@ ol, ul {
 }
 .normal{
   padding: 19px 19px;
-  background-color: green;
+  background-color: gray;
 }
 .up{
   margin: auto;
@@ -463,4 +463,9 @@ ol, ul {
   animation-name: abcd;
   animation-duration: 4s;
   animation-iteration-count: infinite;
+}
+.cancome
+{
+  padding: 19px 19px;
+  background-color: green;
 }
