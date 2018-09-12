@@ -16,6 +16,7 @@ import App_chess from "./App-chess";
 import App_tic_tac_toe from "./App-tic-tac-toe";
 import App_tank from "./App-tank";
 import App_sudoku_solver from "./Sudoku_Solver";
+import Minesweeper from "./Minesweeper";
 class AppChooser extends React.Component {
   constructor(props) {
     super(props);
@@ -30,6 +31,10 @@ class AppChooser extends React.Component {
     // console.log(this.state);
   }
   evaluateChoice(e) {
+    if (e === 12)
+    {
+      ReactDOM.render(<Minesweeper />,document.getElementById("root"));
+    }
     if(e === 11)
     {
       ReactDOM.render(<App_sudoku_solver />,document.getElementById("root"));
@@ -74,7 +79,8 @@ class AppChooser extends React.Component {
     else if (name === "chess_load") option = 8;
     else if (name === "tic_tac_toe_load") option = 9;
     else if (name === "tank_load") option = 10;
-    else if (name === "sudoku_solver_load") option=11;
+    else if (name === "sudoku_solver_load") option = 11;
+    else if (name === "minesweeper_load") option = 12;
     this.handleChangeSubmit(e);
     this.evaluateChoice(option);
   }
@@ -138,6 +144,11 @@ class AppChooser extends React.Component {
         <br/>
         <button onClick={this.handleChange} name="sudoku_solver_load">
           Sudoku_Solver
+        </button>
+        <br />
+        <br />
+        <button onClick={this.handleChange} name="minesweeper_load">
+          Minesweeper
         </button>
       </div>
     );
