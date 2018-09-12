@@ -469,3 +469,114 @@ ol, ul {
   padding: 19px 19px;
   background-color: green;
 }
+.btn
+{
+  width: 30px;
+  height : 30px;
+  background: #595959;
+  border-color: white;
+}
+.num1
+{
+  width: 30px;
+  height : 30px;
+  color: blue;
+  font-weight: 900;
+  background: #8c8c8c;
+  border-color: white;
+}
+.num2
+{
+  width: 30px;
+  height : 30px;
+  color: green;
+  font-weight: 900;
+  background: #8c8c8c;
+  border-color: white;
+}
+.num3
+{
+  width: 30px;
+  height : 30px;
+  color: red;
+  font-weight: 900;
+  background: #8c8c8c;
+  border-color: white;
+}
+.num4
+{
+  width: 30px;
+  height : 30px;
+  color: #00004d;
+  font-weight: 900;
+  background: #8c8c8c;
+  border-color: white;
+}
+.num5
+{
+  width: 30px;
+  height : 30px;
+  color:#990000;
+  font-weight: 900;
+  background: #8c8c8c;
+  border-color: white;
+}
+.num6
+{
+  width: 30px;
+  height : 30px;
+  color:#00b3b3;
+  font-weight: 900;
+  background: #8c8c8c;
+  border-color: white;
+}
+.num7
+{
+  width: 30px;
+  height : 30px;
+  color:black;
+  font-weight: 900;
+  background: #8c8c8c;
+  border-color: white;
+}
+.num8
+{
+  width: 30px;
+  height : 30px;
+  color:gray;
+  font-weight: 900;
+  background: #8c8c8c;
+  border-color: white;
+}
+.num0
+{
+  width: 30px;
+  height : 30px;
+  padding: 7px;
+  background: #8c8c8c;
+  border-color: white;
+}
+.flag
+{
+  background: url("./img/flag.png");
+  background-size: 100%;
+  padding: 9px;
+  width: 30px;
+  height : 30px;
+}
+.num10
+{
+  background: url("./img/mine.png");
+  background-size: 100%;
+  padding: 9px;
+  width: 30px;
+  height : 30px;
+}
+.critical
+{
+  background: url("./img/mine_explosion.png");
+  background-size: 100%;
+  padding: 9px;
+  width: 30px;
+  height : 30px;
+}
