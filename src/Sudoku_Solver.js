@@ -1,12 +1,22 @@
 import React from 'react';
 //import Board from './Board';
 import './App.css';
+function createBoard()
+{
+  let board = Array(9);
+  for(let i=0;i<9;i++)
+  {
+    let subarray = Array(9).fill(0);
+    board[i]=subarray;
+  }
+  return board;
+}
 class App_sudoku_solver extends React.Component{
   constructor(props)
   {
       super(props);
       this.state = {
-        squares : /*this.createBoard(),*/ /*Array(9).fill(Array(9).fill(0))*/[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]],
+        squares : createBoard(),///*this.createBoard(),*/ /*Array(9).fill(Array(9).fill(0))*/[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]],
         IsEnd:false
       }
       this.handleChange=this.handleChange.bind(this);
@@ -151,14 +161,18 @@ class App_sudoku_solver extends React.Component{
           this.setState({IsEnd:true});
           return true;
         }
+    let ok=false;
     for(let i=0;i<9;i++)
     {
+      if(ok)
+      break;
       for(let j=0;j<9;j++)
       {
         if(board[i][j] === 0 || isNaN(board[i][j]))
         {
           row=i;
           col=j;
+          ok=true;
           break;
         }
       }
