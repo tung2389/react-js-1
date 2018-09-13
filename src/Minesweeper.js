@@ -13,7 +13,7 @@ function createBoard(n,m,val)
   }
   return array;
 }
-class Minesweeper extends React.Component{
+class App extends React.Component{
   constructor(props)
   {
     super(props);
@@ -23,7 +23,7 @@ class Minesweeper extends React.Component{
       isEnding:false,
       presquares:createBoard(9,9,null),
       squares:createBoard(9,9,null),
-      status:createBoard(9,9,"btn"),
+      status:createBoard(9,9,"butn"),
       start:false,
       hard:6,
       bopen:0
@@ -58,7 +58,7 @@ class Minesweeper extends React.Component{
     let presquares = this.state.presquares.slice();
     let squares = this.state.squares.slice();
     let status = this.state.status.slice();
-    if(status[x][y]==="btn" && presquares[x][y]!==10)
+    if(status[x][y]==="butn" && presquares[x][y]!==10)
     {
       obj.t = obj.t + 1;
     }
@@ -182,13 +182,13 @@ class Minesweeper extends React.Component{
     }
     else if(e.button === 2)
     {
-      if(status[x][y]==="btn")
+      if(status[x][y]==="butn")
       {
         status[x][y]="flag";
       }
       else if(status[x][y]==="flag")
       {
-        status[x][y]="btn";
+        status[x][y]="butn";
       }
     }
     this.setState({status:status});
@@ -228,7 +228,7 @@ class Minesweeper extends React.Component{
       isEnding:false,
       presquares:createBoard(n,m,null),
       squares:createBoard(n,m,null),
-      status:createBoard(n,m,"btn"),
+      status:createBoard(n,m,"butn"),
       start:false,
       hard:hard,
       bopen:0
@@ -241,7 +241,7 @@ class Minesweeper extends React.Component{
     this.setState({n:e.target.value,
       presquares:createBoard(nn,m,null),
       squares:createBoard(nn,m,null),
-      status:createBoard(nn,m,"btn")});
+      status:createBoard(nn,m,"butn")});
   }
   changeCol(e)
   {
@@ -250,7 +250,7 @@ class Minesweeper extends React.Component{
     this.setState({m:nm,
       presquares:createBoard(n,nm,null),
       squares:createBoard(n,nm,null),
-      status:createBoard(n,nm,"btn")});
+      status:createBoard(n,nm,"butn")});
   }
   changeDifficult(e)
   {
@@ -265,18 +265,34 @@ class Minesweeper extends React.Component{
     let status=this.state.status.slice();
     let n = this.state.n;
     let m = this.state.m;
+
     return(
       <div align = 'center'>
-      <h6>Minesweeper - Created by <a href="https://www.facebook.com/profile.php?id=100006826129122">Lưu Khánh Tùng</a> from HSGS </h6>
+       <h6>Minesweeper - Created by <a href="https://www.facebook.com/profile.php?id=100006826129122">Lưu Khánh Tùng</a> from HSGS </h6>
         <button onClick={this.start}>Start</button>
         <button onClick={this.restart}>Restart</button>
+        <label className = "blabel" htmlFor = "modal-1">Notes</label>
+      <input className="modall-state" id="modal-1" type="checkbox" />
+        <div className="modall">
+            <label className="modall2" htmlFor="modal-1" />
+            <div className="modall3">
+            <label className="modall2" htmlFor="modal-1" />
+            <h4>Some notes:</h4>
+            <h4>If you don't click the start button,you can't click any cell on the game. Every time you restart, make sure to click the start button if you want to play</h4>
+            <h4>The bigger values of row x column is, the greater number of value of x is.</h4>
+            <h4>If the values of row and column are small, sometime, with many different value of x, the numbers of bomb is approximately the same.</h4>
+            <h4>If the values of row and column are big, only with a slight change, it can greatly change the difficulty of the game.</h4>
+            <h4>If the values of row is too big, the board will break the line. So change them carefully.</h4>
+            <h4>Finally,you can click on anywhere in this area to make it dissapear :) .</h4>
+            </div>
+          </div>
         <h6>Change number of row, default value is 9</h6><input onChange={this.changeRow} type = "range" min = {1} max={100} step={1} disabled={this.state.start} defaultValue={9}/>
         <h6>Change number of column, default value is 9</h6><input onChange={this.changeCol} type = "range" min = {1} max={100} step={1} disabled={this.state.start} defaultValue={9}/>
-        <h6>Change the density of bomb, default value is 6(lower the density is, harder the game is)</h6>
+        <h6>Change the value x, the number of bomb is caculate according to expression (row * column) / x, default value of x is 6</h6>
         <input onChange={this.changeDifficult} type = "range" min = {2} max={m*n} step={1} disabled={this.state.start} defaultValue={6}/>
-        <Board n={n} m={m} onMouseDown = {(e,x,y) => this.clickevent(e,x,y)} squares={squares} status={status} isEnding={this.state.isEnding} start={this.state.start} /> 
+        <Board n={n} m={m} onMouseDown = {(e,x,y) => this.clickevent(e,x,y)} squares={squares} status={status} isEnding={this.state.isEnding} start={this.state.start} />  
       </div>
     );
   }
 }
-export default Minesweeper;
+export default App;
