@@ -469,90 +469,106 @@ ol, ul {
   padding: 19px 19px;
   background-color: green;
 }
-.btn
+.butn
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   background: #595959;
   border-color: white;
 }
 .num1
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   color: blue;
+  padding: 0px;
+  font-size: 11px;
   font-weight: 900;
   background: #8c8c8c;
   border-color: white;
 }
 .num2
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   color: green;
+  padding: 0px;
+  font-size: 11px;
   font-weight: 900;
   background: #8c8c8c;
   border-color: white;
 }
 .num3
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   color: red;
+  padding: 0px;
+  font-size: 11px;
   font-weight: 900;
   background: #8c8c8c;
   border-color: white;
 }
 .num4
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   color: #00004d;
+  padding: 0px;
+  font-size: 11px;
   font-weight: 900;
   background: #8c8c8c;
   border-color: white;
 }
 .num5
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   color:#990000;
+  padding: 0px;
+  font-size: 11px;
   font-weight: 900;
   background: #8c8c8c;
   border-color: white;
 }
 .num6
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   color:#00b3b3;
+  padding: 0px;
+  font-size: 11px;
   font-weight: 900;
   background: #8c8c8c;
   border-color: white;
 }
 .num7
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   color:black;
+  padding: 0px;
+  font-size: 11px;
   font-weight: 900;
   background: #8c8c8c;
   border-color: white;
 }
 .num8
 {
-  width: 30px;
-  height : 30px;
+  width: 16px;
+  height : 16px;
   color:gray;
+  padding: 0px;
+  font-size: 11px;
   font-weight: 900;
   background: #8c8c8c;
   border-color: white;
 }
 .num0
 {
-  width: 30px;
-  height : 30px;
-  padding: 7px;
+  width: 16px;
+  height : 16px;
+  padding: 0px;
   background: #8c8c8c;
   border-color: white;
 }
@@ -560,23 +576,87 @@ ol, ul {
 {
   background: url("./img/flag.png");
   background-size: 100%;
-  padding: 9px;
-  width: 30px;
-  height : 30px;
+  padding: 0px;
+  width: 16px;
+  height : 16px;
 }
 .num10
 {
   background: url("./img/mine.png");
   background-size: 100%;
-  padding: 9px;
-  width: 30px;
-  height : 30px;
+  padding: 0px;
+  width: 16px;
+  height : 16px;
 }
 .critical
 {
   background: url("./img/mine_explosion.png");
   background-size: 100%;
-  padding: 9px;
-  width: 30px;
-  height : 30px;
+  padding: 0px;
+  width: 16px;
+  height : 16px;
+}
+.modall {
+  
+    visibility: hidden; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    padding-top: 100px; /* Location of the box */
+    padding-left: 100px;
+    width: 100%; /* Full width */
+    height:100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #8c8c8c;
+}
+.modall-state
+{
+  display: none;
+}
+.modall-state:checked + .modall {
+  visibility: visible;
+}
+.modall-state:checked + .modall3 {
+  visibility: visible;
+}
+.modall2
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+
+}
+.modall3 {
+  
+  position: fixed; /* Stay in place */
+
+  width: 80%; /* Full width */
+  height:60%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color:  white; /* Fallback color */
+}
+/* Modal Content */
+
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.blabel
+{
+  width: 40px;
+  height: 20px;
+  background: yellow;
+  cursor: pointer;
 }
