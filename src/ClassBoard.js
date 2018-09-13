@@ -20,7 +20,7 @@ class Board extends React.Component
     {
         return <Square className = {this.props.status[x][y]}
                        onMouseDown = { (e) => {this.props.onMouseDown(e,x,y)} }
-                       disabled = {(this.props.status[x][y] !== "btn" && this.props.status[x][y] !== "flag")||this.props.isEnding||!this.props.start}
+                       disabled = {(this.props.status[x][y] !== "butn" && this.props.status[x][y] !== "flag")||this.props.isEnding||!this.props.start}
                        value = {this.props.squares[x][y]}
                 />
     }
