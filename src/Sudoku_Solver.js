@@ -154,6 +154,7 @@ class App_sudoku_solver extends React.Component{
    {
     if(this.state.IsEnd === true)
     return true;
+    //this board is copied by reference
     const board = this.state.squares.slice();
     let row,col;
     if(!this.findvalid())
@@ -182,13 +183,11 @@ class App_sudoku_solver extends React.Component{
         if(this.isSafe(row,col,num))
         {
             board[row][col]=num;
-            this.setState({squares:board});
             if(this.backtrack())
             {
               return true;
             }
             board[row][col]=0;
-            this.setState({squares:board});
         }
     }
     return false;
