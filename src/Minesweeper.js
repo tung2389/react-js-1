@@ -13,7 +13,7 @@ function createBoard(n,m,val)
   }
   return array;
 }
-class App extends React.Component{
+class Minesweeper extends React.Component{
   constructor(props)
   {
     super(props);
@@ -295,4 +295,4 @@ class App extends React.Component{
     );
   }
 }
-export default App;
+export default Minesweeper;
