@@ -282,6 +282,19 @@ ol, ul {
   text-align: center;
   padding: 20px 10px;
 }
+.squareline4 {
+  background: green;
+  border: 1px solid green;
+  float: left;
+  right:23px;
+  position: absolute;
+  font-weight: bold;
+  line-height: 34px;
+  margin: auto;
+  text-align: center;
+  padding: 20px 10px;
+
+}
 .squareline3 {
   background: green;
   border: 1px solid green;
