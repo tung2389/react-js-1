@@ -44,7 +44,12 @@ for(let i=0;i<n;i++)
   if(i===n-1||i===0)
   subarray.push(<button className="squareline3" />);
   else if(j===m-1||j===0)
+  {
+  if(j===0)
   subarray.push(<button className="squareline2" />);
+  else if(j===m-1)
+  subarray.push(<button className="squareline4" />);
+  }
   else
   subarray.push(<button className="square22" />);
   }
@@ -77,6 +82,7 @@ class App_tank extends React.Component {
         this.bulletOnTank=this.bulletOnTank.bind(this);
         this.shootEnemy=this.shootEnemy.bind(this);
         this.restart=this.restart.bind(this);
+        this.abc=this.abc.bind(this);
     }
     update()
     {
@@ -121,7 +127,12 @@ class App_tank extends React.Component {
                     if(i===n-1||i===0)
                     subarray.push(<button className="squareline3" />);
                     else if(j===m-1||j===0)
+                    {
+                    if(j===0)
                     subarray.push(<button className="squareline2" />);
+                    else if(j===m-1)
+                    subarray.push(<button className="squareline4" />);
+                    }
                     else
                     subarray.push(<button className="square22" />);
                 }
@@ -259,7 +270,7 @@ class App_tank extends React.Component {
             }
             else if(ebullet[i].dir===2)
             {
-                if(ebullet[i].y>=m-2)
+                if(ebullet[i].y>=m-1)
                 {
                     ebullet[i].y=99;
                     isEbulletOnBoard[i]=false;
@@ -463,7 +474,7 @@ class App_tank extends React.Component {
         }
         else if(this.state.dirbullet===2)
         {
-            if(defbuly>=m-2)
+            if(defbuly>=m-1)
             {
                 defbuly=9999;
                 clearInterval(this.interval);
@@ -565,8 +576,9 @@ class App_tank extends React.Component {
         }
         else
         {
-        if(event.keyCode===119)
+        if(event.keyCode===38)
         {
+            event.preventDefault();
             if(this.state.dir!==1)
             {
                 this.setState({dir:1});
@@ -581,8 +593,9 @@ class App_tank extends React.Component {
                 }
             }
         }
-        else if(event.keyCode===100)
+        else if(event.keyCode===39)
         {
+            event.preventDefault();
             if(this.state.dir!==2)
             {
                 this.setState({dir:2});
@@ -597,8 +610,9 @@ class App_tank extends React.Component {
                 }
             }
         }
-        else if(event.keyCode===115)
+        else if(event.keyCode===40)
         {
+            event.preventDefault();
             if(this.state.dir!==3)
             {
                 this.setState({dir:3});
@@ -613,8 +627,9 @@ class App_tank extends React.Component {
                 }
             }
         }
-        else if(event.keyCode===97)
+        else if(event.keyCode===37)
         {
+            event.preventDefault();
             if(this.state.dir!==4)
             {
                 this.setState({dir:4});
@@ -633,13 +648,17 @@ class App_tank extends React.Component {
         this.update();
     }
     }
+    abc(event)
+    {
+        alert(event.keyCode);
+    }
     componentDidMount()
     {
         this.enemymove=setInterval(this.EnemyMove,1000);
     }
     render()
     {
-    window.addEventListener("keypress",this.changedir,false);
+    window.addEventListener("keydown",this.changedir,false);
     return (
         <div>
             <h1 align='center'>Health:{this.state.health}</h1>
