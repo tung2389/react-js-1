@@ -145,7 +145,11 @@ class Minesweeper extends React.Component{
     {
       for(let j=0;j<m;j++)
       {
-        if(presquares[i][j]===10)
+        if(presquares[i][j]===10 && status[i][j]==="flag")
+        {
+          status[i][j]="detected";
+        }
+        else if(presquares[i][j]===10)
         {
           status[i][j]="num10";
         }
@@ -160,7 +164,8 @@ class Minesweeper extends React.Component{
     let presquares=this.state.presquares.slice();
     if(e.button === 0)
     {
-
+      if(status[x][y]!=="flag")
+      {
       if(presquares[x][y]===0)
       {
         this.make_dfs(x,y);
@@ -179,6 +184,7 @@ class Minesweeper extends React.Component{
       this.setState({bopen:this.state.bopen+1});
       status[x][y]="num"+presquares[x][y];
       }
+    }
     }
     else if(e.button === 2)
     {
@@ -278,10 +284,11 @@ class Minesweeper extends React.Component{
             <div className="modall3">
             <label className="modall2" htmlFor="modal-1" />
             <h4>Some notes:</h4>
+            <h4>To open the cell, click the left mouse button. To put a flag, click the right mouse button. You can't open a cell if there is a flag on it. To remove the flag on a cell, click the right mouse button</h4>
             <h4>If you don't click the start button,you can't click any cell on the game. Every time you restart, make sure to click the start button if you want to play</h4>
             <h4>The bigger values of row x column is, the greater number of value of x is.</h4>
-            <h4>If the values of row and column are small, sometime, with many different value of x, the numbers of bomb is approximately the same.</h4>
-            <h4>If the values of row and column are big, only with a slight change, it can greatly change the difficulty of the game.</h4>
+            <h4>With many different values of x which are big enough , the numbers of bomb is approximately the same.</h4>
+            <h4>If the values of (row x column) is big, only with a slight change, it can greatly change the difficulty of the game. So change the value of x slowly</h4>
             <h4>If the values of row is too big, the board will break the line. So change them carefully.</h4>
             <h4>Finally,you can click on anywhere in this area to make it dissapear :) .</h4>
             </div>
