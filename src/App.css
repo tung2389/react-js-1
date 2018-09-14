@@ -474,7 +474,7 @@ ol, ul {
   width: 16px;
   height : 16px;
   background: #595959;
-  border-color: white;
+  border-color: green;
 }
 .num1
 {
@@ -596,6 +596,14 @@ ol, ul {
   width: 16px;
   height : 16px;
 }
+.detected
+{
+  background: url("./img/mine-detected.png");
+  background-size: 100%;
+  padding: 0px;
+  width: 16px;
+  height : 16px;
+}
 .modall {
   
     visibility: hidden; /* Hidden by default */
@@ -655,8 +663,15 @@ ol, ul {
 }
 .blabel
 {
-  width: 40px;
-  height: 20px;
-  background: yellow;
+  width: 50px;
+  height: 30px;
+  border-radius: 10px;
+  position: absolute;
+  right: 100px;
+  background: #00e600;
   cursor: pointer;
+}
+.blabel:hover
+{
+  background: #66ff66;
 }
