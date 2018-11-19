@@ -17,6 +17,7 @@ import App_tic_tac_toe from "./App-tic-tac-toe";
 import App_tank from "./App-tank";
 import App_sudoku_solver from "./Sudoku_Solver";
 import Minesweeper from "./Minesweeper";
+import Simple_caculator from "./Simple_caculator";
 class AppChooser extends React.Component {
   constructor(props) {
     super(props);
@@ -64,6 +65,8 @@ class AppChooser extends React.Component {
       ReactDOM.render(<App_tic_tac_toe />, document.getElementById("root"));
     else if (e === 10)
       ReactDOM.render(<App_tank />, document.getElementById("root"));
+    else if(e === 13)
+      ReactDOM.render(<Simple_caculator/>,document.getElementById("root"));
   }
   handleChange(e) {
     var name = e.target.name;
@@ -81,6 +84,7 @@ class AppChooser extends React.Component {
     else if (name === "tank_load") option = 10;
     else if (name === "sudoku_solver_load") option = 11;
     else if (name === "minesweeper_load") option = 12;
+    else if (name === "caculator_load") option = 13;
     this.handleChangeSubmit(e);
     this.evaluateChoice(option);
   }
@@ -149,6 +153,11 @@ class AppChooser extends React.Component {
         <br />
         <button onClick={this.handleChange} name="minesweeper_load">
           Minesweeper
+        </button>
+        <br />
+        <br />
+        <button onClick={this.handleChange} name="caculator_load">
+          Simple_caculator
         </button>
       </div>
     );
